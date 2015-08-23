@@ -6,6 +6,15 @@ public class Hovercraft : MonoBehaviour {
 
     public Ragdoll root;
     public Text PedestriansCountText;
+    public Text ProgressText;
+    public RectTransform Progress;
+    public Image VisualProgress;
+
+    public GameObject ScoreboardInputDialogue;
+    public GameObject HUD;
+
+    public Color MaxColor;
+    public Color MinColor;
 
     public float Acceleration;
     public float RotationRate;
@@ -13,7 +22,20 @@ public class Hovercraft : MonoBehaviour {
     public float TurnRotationAngle;
     public float TurnRotationSpeed;
 
-    float pedestriansCount;
+    public float difficulty;
+    public float maxBloodlust;
+
+    [HideInInspector]
+    public float pedestriansCount;
+    [HideInInspector]
+    public float time;
+
+    float cachedY;
+    float maxXValue;
+    float minXValue;
+    float currentBloodlust;
+
+    float startTime;
     float rotVel;
     bool triggered;
 
@@ -23,6 +45,25 @@ public class Hovercraft : MonoBehaviour {
     {
         rigidbody = GetComponent<Rigidbody>();
         triggered = false;
+        cachedY = Progress.position.y;
+        maxXValue = Progress.position.x;
+        minXValue = Progress.position.x - Progress.rect.width;
+        currentBloodlust = maxBloodlust;
+
+        startTime = Time.time;
+    }
+
+    void Update()
+    {
+        if (triggered) { return; };
+
+        if ((currentBloodlust -= Time.deltaTime * (difficulty + Mathf.Min(pedestriansCount / 10.0f, 5.0f))) <= 0.0f) Lose();
+        ProgressText.text = "Bloodlust: " + Mathf.RoundToInt(currentBloodlust);
+
+        float currentXValue = MapValues(currentBloodlust, 0, maxBloodlust, minXValue, maxXValue);
+        Progress.position = new Vector3(currentXValue, cachedY);
+
+        VisualProgress.color = Color.Lerp(MinColor, MaxColor, currentBloodlust / maxBloodlust);
     }
 
     void FixedUpdate()
@@ -61,15 +102,33 @@ public class Hovercraft : MonoBehaviour {
 
         if (col.relativeVelocity.magnitude > 15.0f)
         {
-            triggered = true;
+            Lose();
             rigidbody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
             root.InstantiateRagdoll(null);
             (root.GetComponent<Rigidbody>() as Rigidbody).AddExplosionForce(col.relativeVelocity.magnitude*35f, root.transform.position, 5f);
         }
     }
 
+    void Lose()
+    {
+        triggered = true;
+        time = Time.time - startTime;
+        HUD.SetActive(false);
+        ScoreboardInputDialogue.SetActive(true);
+    }
+
     public void OnPedestrianKill()
     {
-        PedestriansCountText.text = string.Format("{0} Pedestrians Slaughtered!", ++pedestriansCount);
+        if (triggered) { return; };
+
+        PedestriansCountText.text = string.Format("{0}", ++pedestriansCount);
+        if((currentBloodlust += Mathf.Max(difficulty / (pedestriansCount / 10.0f), 1.0f)) > maxBloodlust) {
+            currentBloodlust = maxBloodlust;
+        }  
+    }
+
+    float MapValues(float x, float inMin, float inMax, float outMin, float outMax)
+    {
+        return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
     }
 }

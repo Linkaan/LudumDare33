@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Pedestrian : MonoBehaviour {
 
+    public AudioClip[] hurt;
     public Ragdoll root;
     public GameObject WalkBoundaries;
     public float Speed;
@@ -59,6 +60,8 @@ public class Pedestrian : MonoBehaviour {
         if (triggered || !other.CompareTag("Player")) { return; }
 
         (other.GetComponent<Hovercraft>() as Hovercraft).OnPedestrianKill();
+        GetComponent<AudioSource>().clip = hurt[Random.Range(0, hurt.Length)];
+        GetComponent<AudioSource>().Play();
         triggered = true;
         gameObject.tag = "Dead";
         Destroy(gameObject, 15);

@@ -26,11 +26,11 @@ public class ProceduralTerrainGeneration : MonoBehaviour {
             for (int z = 0; z < sqrtAmount; z++)
             {
                 GameObject housePrefab = HousePrefabs[Random.Range(0, HousePrefabs.Length-1)];
-                float width = housePrefab.GetComponent<Renderer>().bounds.size.x;
-                float depth = housePrefab.GetComponent<Renderer>().bounds.size.z;
+                float width = housePrefab.transform.FindChild("Roof").GetComponent<Renderer>().bounds.size.x;
+                float depth = housePrefab.transform.FindChild("Roof").GetComponent<Renderer>().bounds.size.z;
 
                 Vector3 position = new Vector3((xInc) * x - spawnBoundaries.center.x - spawnBoundaries.size.x/2 + width, 0, (zInc) * z - spawnBoundaries.center.z - spawnBoundaries.size.z/2 + depth);
-                Instantiate(housePrefab, position, Quaternion.Euler(new Vector3(-90, 90 * Random.Range(0, 3), 0)));
+                Instantiate(housePrefab, position, Quaternion.Euler(new Vector3(0, 90 * Random.Range(0, 3), 0)));
             }
         }
     }
