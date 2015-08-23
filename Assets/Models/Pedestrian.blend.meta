@@ -1,0 +1,288 @@
+fileFormatVersion: 2
+guid: f3e43842bd6084642a3dc721039837e7
+timeCreated: 1440234988
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Head
+    100002: LeftArm
+    100004: LeftLeg
+    100006: LeftThigh
+    100008: LeftUpperArm
+    100010: //RootNode
+    100012: Pelvis
+    100014: RightArm
+    100016: RightLeg
+    100018: RightThigh
+    100020: RightUpperArm
+    100022: Arm_L
+    100024: Arm_R
+    100026: Armature
+    100028: Head_0
+    100030: Leg_L
+    100032: Leg_R
+    100034: Thigh_L
+    100036: Thigh_R
+    100038: UpperArm_L
+    100040: UpperArm_R
+    100042: Pelvis_0
+    400000: Head
+    400002: LeftArm
+    400004: LeftLeg
+    400006: LeftThigh
+    400008: LeftUpperArm
+    400010: //RootNode
+    400012: Pelvis
+    400014: RightArm
+    400016: RightLeg
+    400018: RightThigh
+    400020: RightUpperArm
+    400022: Arm_L
+    400024: Arm_R
+    400026: Armature
+    400028: Head_0
+    400030: Leg_L
+    400032: Leg_R
+    400034: Thigh_L
+    400036: Thigh_R
+    400038: UpperArm_L
+    400040: UpperArm_R
+    400042: Pelvis_0
+    2300000: Head
+    2300002: LeftArm
+    2300004: LeftLeg
+    2300006: LeftThigh
+    2300008: LeftUpperArm
+    2300010: Pelvis
+    2300012: RightArm
+    2300014: RightLeg
+    2300016: RightThigh
+    2300018: RightUpperArm
+    3300000: Head
+    3300002: LeftArm
+    3300004: LeftLeg
+    3300006: LeftThigh
+    3300008: LeftUpperArm
+    3300010: Pelvis
+    3300012: RightArm
+    3300014: RightLeg
+    3300016: RightThigh
+    3300018: RightUpperArm
+    4300000: LeftLeg
+    4300002: Head
+    4300004: LeftArm
+    4300006: LeftUpperArm
+    4300008: RightUpperArm
+    4300010: RightArm
+    4300012: RightLeg
+    4300014: RightThigh
+    4300016: LeftThigh
+    4300018: Pelvis
+    7400000: Default Take
+    7400002: ArmatureAction_002
+    9500000: //RootNode
+    13700000: Head
+    13700002: LeftArm
+    13700004: LeftLeg
+    13700006: LeftThigh
+    13700008: LeftUpperArm
+    13700010: RightArm
+    13700012: RightLeg
+    13700014: RightThigh
+    13700016: RightUpperArm
+    13700018: Pelvis
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Default Take
+      takeName: Default Take
+      firstFrame: 0
+      lastFrame: 31
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Head_0
+        weight: 1
+      - path: Armature/Thigh_L
+        weight: 1
+      - path: Armature/Thigh_L/Leg_L
+        weight: 1
+      - path: Armature/Thigh_R
+        weight: 1
+      - path: Armature/Thigh_R/Leg_R
+        weight: 1
+      - path: Armature/UpperArm_L
+        weight: 1
+      - path: Armature/UpperArm_L/Arm_L
+        weight: 1
+      - path: Armature/UpperArm_R
+        weight: 1
+      - path: Armature/UpperArm_R/Arm_R
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: LeftArm
+        weight: 1
+      - path: LeftLeg
+        weight: 1
+      - path: LeftThigh
+        weight: 1
+      - path: LeftUpperArm
+        weight: 1
+      - path: Pelvis
+        weight: 1
+      - path: RightArm
+        weight: 1
+      - path: RightLeg
+        weight: 1
+      - path: RightThigh
+        weight: 1
+      - path: RightUpperArm
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: ArmatureAction_002
+      takeName: ArmatureAction_002
+      firstFrame: 0
+      lastFrame: 31
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Head_0
+        weight: 1
+      - path: Armature/Thigh_L
+        weight: 1
+      - path: Armature/Thigh_L/Leg_L
+        weight: 1
+      - path: Armature/Thigh_R
+        weight: 1
+      - path: Armature/Thigh_R/Leg_R
+        weight: 1
+      - path: Armature/UpperArm_L
+        weight: 1
+      - path: Armature/UpperArm_L/Arm_L
+        weight: 1
+      - path: Armature/UpperArm_R
+        weight: 1
+      - path: Armature/UpperArm_R/Arm_R
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: LeftArm
+        weight: 1
+      - path: LeftLeg
+        weight: 1
+      - path: LeftThigh
+        weight: 1
+      - path: LeftUpperArm
+        weight: 1
+      - path: Pelvis
+        weight: 1
+      - path: RightArm
+        weight: 1
+      - path: RightLeg
+        weight: 1
+      - path: RightThigh
+        weight: 1
+      - path: RightUpperArm
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .25
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

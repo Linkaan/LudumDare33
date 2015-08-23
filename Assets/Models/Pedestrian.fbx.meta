@@ -1,0 +1,227 @@
+fileFormatVersion: 2
+guid: b73941d196bf50d44b489890e8a5a9f8
+timeCreated: 1440256846
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Arm.L
+    100002: Arm.L_end
+    100004: Arm.R
+    100006: Arm.R_end
+    100008: Head
+    100010: Head 1
+    100012: Head_end
+    100014: LeftArm
+    100016: LeftLeg
+    100018: LeftThigh
+    100020: LeftUpperArm
+    100022: Leg.L
+    100024: Leg.L_end
+    100026: Leg.R
+    100028: Leg.R_end
+    100030: //RootNode
+    100032: Pelvis
+    100034: Pelvis 1
+    100036: RightArm
+    100038: RightLeg
+    100040: RightThigh
+    100042: RightUpperArm
+    100044: Thigh.L
+    100046: Thigh.R
+    100048: UpperArm.L
+    100050: UpperArm.R
+    400000: Arm.L
+    400002: Arm.L_end
+    400004: Arm.R
+    400006: Arm.R_end
+    400008: Head
+    400010: Head 1
+    400012: Head_end
+    400014: LeftArm
+    400016: LeftLeg
+    400018: LeftThigh
+    400020: LeftUpperArm
+    400022: Leg.L
+    400024: Leg.L_end
+    400026: Leg.R
+    400028: Leg.R_end
+    400030: //RootNode
+    400032: Pelvis
+    400034: Pelvis 1
+    400036: RightArm
+    400038: RightLeg
+    400040: RightThigh
+    400042: RightUpperArm
+    400044: Thigh.L
+    400046: Thigh.R
+    400048: UpperArm.L
+    400050: UpperArm.R
+    2300000: Head 1
+    2300002: LeftArm
+    2300004: LeftLeg
+    2300006: LeftThigh
+    2300008: LeftUpperArm
+    2300010: Pelvis 1
+    2300012: RightArm
+    2300014: RightLeg
+    2300016: RightThigh
+    2300018: RightUpperArm
+    3300000: Head 1
+    3300002: LeftArm
+    3300004: LeftLeg
+    3300006: LeftThigh
+    3300008: LeftUpperArm
+    3300010: Pelvis 1
+    3300012: RightArm
+    3300014: RightLeg
+    3300016: RightThigh
+    3300018: RightUpperArm
+    4300000: Pelvis
+    4300002: RightThigh
+    4300004: RightLeg
+    4300006: LeftUpperArm
+    4300008: LeftArm
+    4300010: LeftThigh
+    4300012: LeftLeg
+    4300014: RightUpperArm
+    4300016: RightArm
+    4300018: Head
+    7400000: Armature|Running
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|Running
+      takeName: Armature|Running
+      firstFrame: 0
+      lastFrame: 31
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Pelvis
+        weight: 1
+      - path: Pelvis/Head
+        weight: 1
+      - path: Pelvis/Head/Head 1
+        weight: 1
+      - path: Pelvis/Head/Head_end
+        weight: 1
+      - path: Pelvis/Pelvis 1
+        weight: 1
+      - path: Pelvis/Thigh.L
+        weight: 1
+      - path: Pelvis/Thigh.L/LeftThigh
+        weight: 1
+      - path: Pelvis/Thigh.L/Leg.L
+        weight: 1
+      - path: Pelvis/Thigh.L/Leg.L/LeftLeg
+        weight: 1
+      - path: Pelvis/Thigh.L/Leg.L/Leg.L_end
+        weight: 1
+      - path: Pelvis/Thigh.R
+        weight: 1
+      - path: Pelvis/Thigh.R/Leg.R
+        weight: 1
+      - path: Pelvis/Thigh.R/Leg.R/Leg.R_end
+        weight: 1
+      - path: Pelvis/Thigh.R/Leg.R/RightLeg
+        weight: 1
+      - path: Pelvis/Thigh.R/RightThigh
+        weight: 1
+      - path: Pelvis/UpperArm.L
+        weight: 1
+      - path: Pelvis/UpperArm.L/Arm.L
+        weight: 1
+      - path: Pelvis/UpperArm.L/Arm.L/Arm.L_end
+        weight: 1
+      - path: Pelvis/UpperArm.L/Arm.L/LeftArm
+        weight: 1
+      - path: Pelvis/UpperArm.L/LeftUpperArm
+        weight: 1
+      - path: Pelvis/UpperArm.R
+        weight: 1
+      - path: Pelvis/UpperArm.R/Arm.R
+        weight: 1
+      - path: Pelvis/UpperArm.R/Arm.R/Arm.R_end
+        weight: 1
+      - path: Pelvis/UpperArm.R/Arm.R/RightArm
+        weight: 1
+      - path: Pelvis/UpperArm.R/RightUpperArm
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .25
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
