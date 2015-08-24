@@ -17,7 +17,12 @@ public class ScoreManager : MonoBehaviour {
     long flag;
 
     Thread thread;
-    Dictionary<string, Dictionary<string, int>> userScores;
+    Dictionary<string, UserScore> userScores;
+
+    public struct UserScore {
+        public Dictionary<string, int> scores;
+        public string name;
+    }
 
     void Update()
     {
@@ -26,12 +31,13 @@ public class ScoreManager : MonoBehaviour {
             thread = null;
             if (Interlocked.Read(ref flag) > 0)
             {
-                SetScore(value, "score", (int)GameObject.FindObjectOfType<Hovercraft>().pedestriansCount);
-                SetScore(value, "time", (int)GameObject.FindObjectOfType<Hovercraft>().time);
+                SetScore(Guid.NewGuid().ToString(), value, "score", (int)GameObject.FindObjectOfType<Hovercraft>().pedestriansCount);
+                SetScore(Guid.NewGuid().ToString(), value, "time", (int)GameObject.FindObjectOfType<Hovercraft>().time);
             }
             button.transform.parent.gameObject.SetActive(false);
             loadingPrefab.SetActive(false);
             scoreBoard.SetActive(true);
+            scoreBoard.GetComponentInChildren<UserscoreList>().UpdateScoreboard();
         }
 
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -44,34 +50,39 @@ public class ScoreManager : MonoBehaviour {
         }
     }
 
-    public int GetScore(string username, string scoreType)
+    public int GetScore(string userid, string scoreType)
     {
-        if (userScores == null) userScores = new Dictionary<string, Dictionary<string, int>>();
+        if (userScores == null) userScores = new Dictionary<string, UserScore>();
 
-        if (!userScores.ContainsKey(username))
+        if (!userScores.ContainsKey(userid))
         {
             return 0;
         }
-        if (!userScores[username].ContainsKey(scoreType))
+        if (!userScores[userid].scores.ContainsKey(scoreType))
         {
             return 0;
         }
-        return userScores[username][scoreType];
+        return userScores[userid].scores[scoreType];
     }
 
-    public void SetScore(string username, string scoreType, int value)
+    public void SetScore(string userid, string username, string scoreType, int value)
     {
-        if (userScores == null) userScores = new Dictionary<string, Dictionary<string, int>>();
-        if (!userScores.ContainsKey(username))
+        if (userScores == null) userScores = new Dictionary<string, UserScore>();
+        if (!userScores.ContainsKey(userid))
         {
-            userScores[username] = new Dictionary<string, int>();
+            userScores[userid] = new UserScore() { name = username, scores = new Dictionary<string, int>() };
         }
-        userScores[username][scoreType] = value;
+        userScores[userid].scores[scoreType] = value;
     }
 
-    public string[] GetUserNames(string sortingType)
+    public string GetUserName(string userid)
     {
-        if (userScores == null) userScores = new Dictionary<string, Dictionary<string, int>>();
+        return userScores[userid].name;
+    }
+
+    public string[] GetUserIDs(string sortingType)
+    {
+        if (userScores == null) userScores = new Dictionary<string, UserScore>();
 
         return userScores.Keys.OrderByDescending(n => GetScore(n, sortingType)).ToArray();
     }
@@ -143,7 +154,7 @@ public class ScoreManager : MonoBehaviour {
 
         try
         {
-            query = "SELECT * FROM `scores`";
+            query = "SELECT * FROM `scores` ORDER BY `score` LIMIT 20";
             if (con.State.ToString() != "Open")
                 con.Open();
 
@@ -156,8 +167,8 @@ public class ScoreManager : MonoBehaviour {
                     string name = rdr["name"].ToString();
                     int score = int.Parse(rdr["score"].ToString());
                     int time = int.Parse(rdr["time"].ToString());
-                    SetScore(name, "score", score);
-                    SetScore(name, "time", time);
+                    SetScore(rdr["id"].ToString(), name, "score", score);
+                    SetScore(rdr["id"].ToString(), name, "time", time);
                 }
                 rdr.Close();
             }

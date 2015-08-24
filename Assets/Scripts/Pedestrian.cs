@@ -13,6 +13,7 @@ public class Pedestrian : MonoBehaviour {
     Vector3 velocity, direction, lastDirection; // ha!
     bool triggered;
     float lastRot;
+    float cachedY;
 
     void Start()
     {
@@ -22,6 +23,7 @@ public class Pedestrian : MonoBehaviour {
         lastDirection = direction;
         triggered = false;
 
+        cachedY = this.transform.position.y;
         Vector3 newSize = WalkBoundaries.GetComponent<Renderer>().bounds.size;
         newSize.y = 10;
         walkBoundaries = new Bounds(WalkBoundaries.GetComponent<Renderer>().bounds.center, newSize);
@@ -53,6 +55,11 @@ public class Pedestrian : MonoBehaviour {
         transform.eulerAngles = new Vector3(90, transform.eulerAngles.y+45, 0);
         //Vector3 vel_n = direction.normalized;
         //Debug.DrawLine(pedestrian.position, pedestrian.position + vel_n, Color.red, 0, true);
+    }
+
+    void LateUpdate()
+    {
+        this.transform.position = new Vector3(this.transform.position.x, cachedY, this.transform.position.z);
     }
 
     void OnTriggerEnter(Collider other)

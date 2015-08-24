@@ -501,7 +501,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11402678, guid: ea1f3291ac4bfad4492f865a11ba9532, type: 2}
       propertyPath: difficulty
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11402678, guid: ea1f3291ac4bfad4492f865a11ba9532, type: 2}
       propertyPath: ScoreboardInputDialogue
@@ -659,7 +659,7 @@ MonoBehaviour:
   m_LineType: 0
   m_HideMobileInput: 0
   m_CharacterValidation: 0
-  m_CharacterLimit: 0
+  m_CharacterLimit: 20
   m_EndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -899,8 +899,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -35}
-  m_SizeDelta: {x: -20, y: -70}
+  m_AnchoredPosition: {x: 0, y: -15}
+  m_SizeDelta: {x: -20, y: -110}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &589199877
 MonoBehaviour:
