@@ -453,7 +453,7 @@ Prefab:
       objectReference: {fileID: 2072628805}
     - target: {fileID: 11402678, guid: ea1f3291ac4bfad4492f865a11ba9532, type: 2}
       propertyPath: RotationRate
-      value: 900
+      value: 1100
       objectReference: {fileID: 0}
     - target: {fileID: 11402678, guid: ea1f3291ac4bfad4492f865a11ba9532, type: 2}
       propertyPath: PedestriansCountText
@@ -773,7 +773,7 @@ MonoBehaviour:
   Camera: {fileID: 1773909992}
   Prefab: {fileID: 197238, guid: 10c0fbc8e935ea54ab99d6d5fca64904, type: 2}
   SpawnBoundaries: {fileID: 422477607}
-  MaxPedestrianCount: 15
+  MaxPedestrianCount: 30
 --- !u!4 &431742891
 Transform:
   m_ObjectHideFlags: 0

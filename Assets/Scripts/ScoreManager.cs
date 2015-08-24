@@ -111,79 +111,101 @@ public class ScoreManager : MonoBehaviour {
         MySqlCommand cmd = null;
         MySqlDataReader rdr = null;
         string query = string.Empty;
+        int attemps = 0;
 
-        try
+        while (attemps <= 3)
         {
-            con = new MySqlConnection("Server=www.db4free.net;Database=ld33;User ID=ld33;Password=ludumdare;Pooling=true");
-            con.Open();
-            Debug.Log("Connection State: " + con.State);
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError(ex.ToString());
-            flag = 1;
-            goto Finish;
-        }
-
-        try
-        {
-            query = "INSERT INTO `scores` (`name`, `score`, `time`) VALUES (?Name, ?Score, ?Time)";
-            if (con.State.ToString() != "Open")
-                con.Open();
-
-            cmd = new MySqlCommand(query, con);
-            MySqlParameter nameParam = cmd.Parameters.Add("?Name", MySqlDbType.VarChar);
-            nameParam.Value = pname;
-            MySqlParameter scoreParam = cmd.Parameters.Add("?Score", MySqlDbType.Int16);
-            scoreParam.Value = pscore;
-            MySqlParameter timeParam = cmd.Parameters.Add("?Time", MySqlDbType.Int16);
-            timeParam.Value = ptime;
-            cmd.ExecuteNonQuery();
-        }
-        catch (Exception ex)
-        {
-            if (con != null)
+            try
             {
-                if (con.State.ToString() != "Closed")
-                    con.Close();
+                con = new MySqlConnection("Server=www.db4free.net;Database=ld33;User ID=ld33;Password=ludumdare;Pooling=true");
+                con.Open();
+                Debug.Log("Connection State: " + con.State);
+                break;
             }
-            Debug.LogError(ex.ToString());
-            flag = 1;
-            goto Finish;
-        }
-
-        try
-        {
-            query = "SELECT * FROM `scores` ORDER BY `score` LIMIT 20";
-            if (con.State.ToString() != "Open")
-                con.Open();
-
-            cmd = new MySqlCommand(query, con);
-            rdr = cmd.ExecuteReader();
-            if (rdr.HasRows)
+            catch (Exception ex)
             {
-                while (rdr.Read())
+                Debug.LogError(ex.ToString());
+                if (++attemps > 3)
                 {
-                    string name = rdr["name"].ToString();
-                    int score = int.Parse(rdr["score"].ToString());
-                    int time = int.Parse(rdr["time"].ToString());
-                    SetScore(rdr["id"].ToString(), name, "score", score);
-                    SetScore(rdr["id"].ToString(), name, "time", time);
+                    flag = 1;
+                    goto Finish;
                 }
-                rdr.Close();
             }
-
         }
-        catch (Exception ex)
+        attemps = 0;
+
+        while (attemps <= 3)
         {
-            if (con != null)
+            try
             {
-                if (con.State.ToString() != "Closed")
-                    con.Close();
+                query = "INSERT INTO `scores` (`name`, `score`, `time`) VALUES (?Name, ?Score, ?Time)";
+                if (con.State.ToString() != "Open")
+                    con.Open();
+
+                cmd = new MySqlCommand(query, con);
+                MySqlParameter nameParam = cmd.Parameters.Add("?Name", MySqlDbType.VarChar);
+                nameParam.Value = pname;
+                MySqlParameter scoreParam = cmd.Parameters.Add("?Score", MySqlDbType.Int16);
+                scoreParam.Value = pscore;
+                MySqlParameter timeParam = cmd.Parameters.Add("?Time", MySqlDbType.Int16);
+                timeParam.Value = ptime;
+                cmd.ExecuteNonQuery();
+                break;
             }
-            Debug.LogError(ex.ToString());
-            Interlocked.Increment(ref flag);
-            goto Finish;
+            catch (Exception ex)
+            {
+                Debug.LogError(ex.ToString());
+                if (++attemps > 3)
+                {
+                    if (con != null)
+                    {
+                        if (con.State.ToString() != "Closed")
+                            con.Close();
+                    }
+                    flag = 1;
+                    goto Finish;
+                }
+            }
+        }
+        attemps = 0;
+
+        while (attemps <= 3) {
+            try
+            {
+                query = "SELECT * FROM `scores` ORDER BY `score` DESC LIMIT 20";
+                if (con.State.ToString() != "Open")
+                    con.Open();
+
+                cmd = new MySqlCommand(query, con);
+                rdr = cmd.ExecuteReader();
+                if (rdr.HasRows)
+                {
+                    while (rdr.Read())
+                    {
+                        string name = rdr["name"].ToString();
+                        int score = int.Parse(rdr["score"].ToString());
+                        int time = int.Parse(rdr["time"].ToString());
+                        SetScore(rdr["id"].ToString(), name, "score", score);
+                        SetScore(rdr["id"].ToString(), name, "time", time);
+                    }
+                    rdr.Close();
+                }
+                break;
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError(ex.ToString());
+                if (++attemps > 3)
+                {
+                    if (con != null)
+                    {
+                        if (con.State.ToString() != "Closed")
+                            con.Close();
+                    }
+                    Interlocked.Increment(ref flag);
+                    goto Finish;
+                }
+            }
         }
 
         if (con != null)

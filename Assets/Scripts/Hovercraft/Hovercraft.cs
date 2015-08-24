@@ -57,7 +57,7 @@ public class Hovercraft : MonoBehaviour {
     {
         if (triggered) { return; };
 
-        if ((currentBloodlust -= Time.deltaTime * (difficulty + Mathf.Min(pedestriansCount / 10.0f, 5.0f))) <= 0.0f) Lose();
+        if ((currentBloodlust -= Time.deltaTime * (Mathf.Min(pedestriansCount / 10.0f, difficulty * 1.5f))) <= 0.0f) Lose();
         ProgressText.text = "Bloodlust: " + Mathf.RoundToInt(currentBloodlust);
 
         float currentXValue = MapValues(currentBloodlust, 0, maxBloodlust, minXValue, maxXValue);
@@ -122,7 +122,7 @@ public class Hovercraft : MonoBehaviour {
         if (triggered) { return; };
 
         PedestriansCountText.text = string.Format("{0}", ++pedestriansCount);
-        if((currentBloodlust += Mathf.Max(difficulty / (pedestriansCount / 10.0f), 1.0f)) > maxBloodlust) {
+        if((currentBloodlust += Mathf.Max(difficulty / (pedestriansCount / 10.0f), 2.5f)) > maxBloodlust) {
             currentBloodlust = maxBloodlust;
         }  
     }
